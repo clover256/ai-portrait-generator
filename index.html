@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,8 +100,14 @@
       const img = document.getElementById('portrait');
       img.style.opacity = 0;
       setTimeout(() => {
-        img.src = 'https://thispersondoesnotexist.com/image?' + new Date().getTime();
-        img.onload = () => (img.style.opacity = 1);
+        const url = 'https://thispersondoesnotexist.com/image?' + new Date().getTime();
+        img.src = url;
+        img.onerror = () => {
+          fetch('https://fakeface.rest/face/json')
+            .then(res => res.json())
+            .then(data => { img.src = data.image_url; });
+        };
+        img.onload = () => { img.style.opacity = 1; };
       }, 300);
     }
 
