@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Portrait Generator</title>
   <meta name="description" content="Generate realistic AI-generated portraits of people who do not exist. Free, fast, and beautiful faces at your fingertips.">
-  <meta name="keywords" content="AI portraits, AI face generator, this person does not exist, AI art, fake people">
+  <meta name="keywords" content="AI portraits, AI face generator, fake face, AI art, synthetic people">
   <meta name="author" content="Your Name">
   <meta property="og:title" content="AI Portrait Generator">
   <meta property="og:description" content="Create AI-generated portraits of fictional people. Instantly.">
-  <meta property="og:image" content="https://thispersondoesnotexist.com/image">
+  <meta property="og:image" content="https://fakeface.rest/face/view">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://clover256.github.io/ai-portrait-generator">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI Portrait Generator">
   <meta name="twitter:description" content="Generate unique AI faces instantly. No signup required.">
-  <meta name="twitter:image" content="https://thispersondoesnotexist.com/image">
+  <meta name="twitter:image" content="https://fakeface.rest/face/view">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -81,7 +81,7 @@
 </head>
 <body>
   <h1>AI Portrait Generator</h1>
-  <img id="portrait" src="https://thispersondoesnotexist.com/image" alt="AI Portrait" loading="lazy" />
+  <img id="portrait" src="" alt="AI Portrait" loading="lazy" />
   <div class="buttons">
     <button onclick="refreshImage()">🔁 Refresh</button>
     <button onclick="downloadImage()">⬇️ Download</button>
@@ -96,19 +96,13 @@
          data-full-width-responsive="true"></ins>
   </div>
   <script>
-    function refreshImage() {
+    async function refreshImage() {
       const img = document.getElementById('portrait');
       img.style.opacity = 0;
-      setTimeout(() => {
-        const url = 'https://thispersondoesnotexist.com/image?' + new Date().getTime();
-        img.src = url;
-        img.onerror = () => {
-          fetch('https://fakeface.rest/face/json')
-            .then(res => res.json())
-            .then(data => { img.src = data.image_url; });
-        };
-        img.onload = () => { img.style.opacity = 1; };
-      }, 300);
+      const res = await fetch('https://fakeface.rest/face/json');
+      const data = await res.json();
+      img.src = data.image_url;
+      img.onload = () => img.style.opacity = 1;
     }
 
     function downloadImage() {
@@ -123,6 +117,8 @@
           a.click();
         });
     }
+
+    window.onload = refreshImage;
   </script>
 </body>
 </html>
