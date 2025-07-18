@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Portrait Generator</title>
+  <meta name="description" content="Generate realistic AI-generated portraits of people who do not exist. Free, fast, and beautiful faces at your fingertips.">
+  <meta name="keywords" content="AI portraits, AI face generator, this person does not exist, AI art, fake people">
+  <meta name="author" content="Your Name">
+  <meta property="og:title" content="AI Portrait Generator">
+  <meta property="og:description" content="Create AI-generated portraits of fictional people. Instantly.">
+  <meta property="og:image" content="https://thispersondoesnotexist.com/image">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://clover256.github.io/ai-portrait-generator">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Portrait Generator">
+  <meta name="twitter:description" content="Generate unique AI faces instantly. No signup required.">
+  <meta name="twitter:image" content="https://thispersondoesnotexist.com/image">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+    #portrait {
+      border-radius: 10px;
+      max-width: 100%;
+      max-height: 70vh;
+      transition: opacity 0.3s ease;
+    }
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    button {
+      background-color: #1e1e1e;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #333;
+    }
+    .ad {
+      margin-top: 30px;
+      min-height: 100px;
+      width: 100%;
+      max-width: 728px;
+    }
+  </style>
+</head>
+<body>
+  <h1>AI Portrait Generator</h1>
+  <img id="portrait" src="https://thispersondoesnotexist.com/image" alt="AI Portrait" loading="lazy" />
+  <div class="buttons">
+    <button onclick="refreshImage()">🔁 Refresh</button>
+    <button onclick="downloadImage()">⬇️ Download</button>
+    <button onclick="window.location.href='https://www.paypal.me/aiPortraitSupport'">💎 Donate with PayPal</button>
+  </div>
+  <div class="ad">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+         data-ad-slot="yyyyyyyyyy"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+  <script>
+    function refreshImage() {
+      const img = document.getElementById('portrait');
+      img.style.opacity = 0;
+      setTimeout(() => {
+        img.src = 'https://thispersondoesnotexist.com/image?' + new Date().getTime();
+        img.onload = () => (img.style.opacity = 1);
+      }, 300);
+    }
+
+    function downloadImage() {
+      const imgURL = document.getElementById('portrait').src;
+      fetch(imgURL)
+        .then(response => response.blob())
+        .then(blob => {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'ai-portrait.jpg';
+          a.click();
+        });
+    }
+  </script>
+</body>
+</html>
